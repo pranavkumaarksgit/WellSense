@@ -8,6 +8,24 @@ if "logged_in" not in st.session_state:
 
 if "user_id" not in st.session_state:
     st.session_state.user_id = ""
+# -------- BACKEND API CALL --------
+
+API_URL = "http://127.0.0.1:8000/risk"
+
+try:
+    response = requests.get(API_URL, timeout=5)
+    backend_data = response.json()
+except:
+    backend_data = {
+        "risk_level": "Moderate",
+        "confidence": "Medium",
+        "explanation": "Backend not reachable. Showing fallback data."
+    }
+
+risk_level = backend_data["risk_level"]
+confidence = backend_data["confidence"]
+explanation = backend_data["explanation"]
+
 
 
 # Backend configuration
@@ -158,6 +176,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
