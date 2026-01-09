@@ -24,11 +24,16 @@ left, right = st.columns([2, 1])
 with left:
     st.subheader("📊 Behaviour Trends")
 
-    # Sample behavioural data
-    data = pd.DataFrame({
-        "Day": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        "Routine Consistency Score": [82, 80, 78, 65, 60, 58, 62]
-    })
+    try:
+    response = requests.get(f"{BACKEND_URL}/risk_score/{USER_ID}", timeout=5)
+    api_data = response.json()
+except:
+    api_data = {
+        "risk_level": "Unknown",
+        "confidence": "N/A",
+        "explanation": "Backend not reachable"
+    }
+
 
     st.line_chart(data.set_index("Day"))
 
@@ -85,6 +90,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
