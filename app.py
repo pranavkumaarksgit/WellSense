@@ -39,11 +39,11 @@ with left:
 
 
     try:
-    trend_response = requests.get(
-        f"{BACKEND_URL}/user_trends/{USER_ID}",
-        timeout=5
-    )
-    trend_json = trend_response.json()
+        trend_response = requests.get(
+            f"{BACKEND_URL}/user_trends/{USER_ID}",
+            timeout=5
+        )
+        trend_json = trend_response.json()
 
     trend_data = pd.DataFrame({
         "Day": trend_json["days"],
@@ -132,6 +132,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
