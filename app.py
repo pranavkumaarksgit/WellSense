@@ -37,7 +37,15 @@ with left:
             "explanation": "Backend not reachable"
         }
 
-    st.line_chart(data.set_index("Day"))
+    st.subheader("📊 Behaviour Trends")
+
+    trend_data = pd.DataFrame({
+        "Day": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "Routine Consistency Score": [82, 80, 78, 65, 60, 58, 62]
+    })
+
+    st.line_chart(trend_data.set_index("Day"))
+
 
 
 with right:
@@ -94,6 +102,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
