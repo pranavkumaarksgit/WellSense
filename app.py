@@ -35,6 +35,10 @@ def login_screen():
 if not st.session_state.logged_in:
     login_screen()
     st.stop()
+    
+# Welcome message
+st.markdown(f"## 👋 Welcome **{st.session_state.user_id}**!")
+
 
 
 # Header
@@ -154,6 +158,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
