@@ -110,6 +110,18 @@ with left:
     })
 
     st.bar_chart(input_data.set_index("Metric"))
+average_score = (
+    sleep_consistency +
+    activity_consistency +
+    routine_stability
+) / 3
+if average_score >= 70:
+    dynamic_confidence = "High"
+elif average_score >= 40:
+    dynamic_confidence = "Medium"
+else:
+    dynamic_confidence = "Low"
+
 
 with right:
     st.subheader("🚦 Well-Being Indicator")
@@ -121,7 +133,8 @@ with right:
     else:
         st.error("Higher change from your usual routine")
 
-    st.caption(f"Confidence level: {confidence}")
+    st.caption(f"Confidence level: {dynamic_confidence}")
+
 
 
 
@@ -177,6 +190,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
