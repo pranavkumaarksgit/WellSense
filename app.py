@@ -107,13 +107,6 @@ with left:
 with right:
     st.subheader("🚦 Well-Being Indicator")
 
-    risk_level = api_data["risk_level"]
-    confidence = api_data.get("confidence", "N/A")
-
-
-    risk_level = api_data["risk_level"]
-    confidence = api_data.get("confidence", "N/A")
-
     if risk_level == "Low":
         st.success("Low change from your usual routine")
     elif risk_level == "Moderate":
@@ -122,6 +115,7 @@ with right:
         st.error("Higher change from your usual routine")
 
     st.caption(f"Confidence level: {confidence}")
+
 
 
 st.subheader("🧠 Why am I seeing this?")
@@ -176,6 +170,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
