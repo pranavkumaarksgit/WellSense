@@ -37,7 +37,6 @@ with left:
             "explanation": "Backend not reachable"
         }
 
-    st.subheader("📊 Behaviour Trends")
 
     trend_data = pd.DataFrame({
         "Day": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -120,6 +119,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
