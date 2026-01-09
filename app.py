@@ -75,13 +75,16 @@ with left:
 
     import numpy as np
 
+    days = list(range(1, 8))
+
     trend_data = pd.DataFrame({
-        "Day": range(1, 8),
-        "Routine Consistency Score": np.random.normal(70, 5, 7)
+        "Day": days,
+        "Sleep Consistency": np.random.normal(75, 4, 7),
+        "Activity Consistency": np.random.normal(68, 6, 7),
+        "Routine Stability": np.random.normal(72, 5, 7)
     })
 
     st.line_chart(trend_data.set_index("Day"))
-
 
     try:
         response = requests.get(
@@ -180,6 +183,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
