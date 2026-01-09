@@ -55,17 +55,18 @@ with right:
     confidence = api_data.get("confidence", "N/A")
 
 
-    if latest_score >= 75:
+    risk_level = api_data["risk_level"]
+    confidence = api_data.get("confidence", "N/A")
+
+    if risk_level == "Low":
         st.success("Low change from your usual routine")
-        confidence = "High"
-    elif latest_score >= 60:
+    elif risk_level == "Moderate":
         st.warning("Moderate change from your usual routine")
-        confidence = "Medium"
     else:
         st.error("Higher change from your usual routine")
-        confidence = "Low"
 
     st.caption(f"Confidence level: {confidence}")
+
 
 st.subheader("🧠 Why am I seeing this?")
 
@@ -102,6 +103,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
