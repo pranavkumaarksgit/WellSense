@@ -79,7 +79,7 @@ with left:
         "😴 Sleep Consistency",
         min_value=0,
         max_value=24,
-        value=75
+        value=24
     )
 
     activity_consistency = st.slider(
@@ -93,7 +93,7 @@ with left:
         "📅 Screen Time",
         min_value=0,
         max_value=24,
-        value=70
+        value=24
     )
 
     input_data = pd.DataFrame({
@@ -190,5 +190,6 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
