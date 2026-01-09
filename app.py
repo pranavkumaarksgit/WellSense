@@ -83,14 +83,14 @@ with left:
     )
 
     activity_consistency = st.slider(
-        "🏃 Activity Consistency",
+        "🏃 Steps",
         min_value=0,
         max_value=100,
         value=65
     )
 
     routine_stability = st.slider(
-        "📅 Routine Stability",
+        "📅 Screen Time",
         min_value=0,
         max_value=100,
         value=70
@@ -99,8 +99,8 @@ with left:
     input_data = pd.DataFrame({
         "Metric": [
             "Sleep Consistency",
-            "Activity Consistency",
-            "Routine Stability"
+            "Steps",
+            "Screen Time"
         ],
         "Score": [
             sleep_consistency,
@@ -190,3 +190,4 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
