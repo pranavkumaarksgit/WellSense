@@ -7,6 +7,8 @@ st.set_page_config(page_title="WellSense", layout="wide")
 # Header
 st.title("🧠 WellSense")
 st.caption("A non-clinical well-being awareness tool")
+st.info("WellSense helps you reflect on routine changes over time.")
+
 
 st.divider()
 
@@ -77,6 +79,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
