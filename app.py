@@ -41,7 +41,9 @@ except:
 with right:
     st.subheader("🚦 Well-Being Indicator")
 
-    latest_score = data["Routine Consistency Score"].iloc[-1]
+    risk_level = api_data["risk_level"]
+    confidence = api_data.get("confidence", "N/A")
+
 
     if latest_score >= 75:
         st.success("Low change from your usual routine")
@@ -90,6 +92,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
