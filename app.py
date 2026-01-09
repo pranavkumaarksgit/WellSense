@@ -78,21 +78,21 @@ with left:
     sleep_consistency = st.slider(
         "😴 Sleep Consistency",
         min_value=0,
-        max_value=100,
+        max_value=24,
         value=75
     )
 
     activity_consistency = st.slider(
         "🏃 Steps",
         min_value=0,
-        max_value=100,
+        max_value=1000000,
         value=65
     )
 
     routine_stability = st.slider(
         "📅 Screen Time",
         min_value=0,
-        max_value=100,
+        max_value=24,
         value=70
     )
 
@@ -190,4 +190,5 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
