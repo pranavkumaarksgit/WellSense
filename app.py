@@ -45,20 +45,15 @@ with left:
         )
         trend_json = trend_response.json()
 
-    trend_data = pd.DataFrame({
-        "Day": trend_json["days"],
-        "Routine Consistency Score": trend_json["routine_score"]
-    })
+        trend_data = pd.DataFrame({
+            "Day": trend_json["days"],
+            "Routine Consistency Score": trend_json["routine_score"]
+        })
 
-    st.line_chart(trend_data.set_index("Day"))
+        st.line_chart(trend_data.set_index("Day"))
 
     except Exception:
         st.warning("Trend data unavailable. Showing recent pattern snapshot.")
-
-
-    st.line_chart(trend_data.set_index("Day"))
-
-
 
 with right:
     st.subheader("🚦 Well-Being Indicator")
@@ -132,6 +127,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
