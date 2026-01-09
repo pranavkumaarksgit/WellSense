@@ -78,21 +78,21 @@ with left:
     sleep_consistency = st.slider(
         "😴 Sleep Consistency",
         min_value=0,
-        max_value=100,
+        max_value=10,
         value=75
     )
 
     activity_consistency = st.slider(
         "🏃 Activity Consistency",
         min_value=0,
-        max_value=100,
+        max_value=10,
         value=65
     )
 
-    routine_stability = st.slider(
-        "📅 Routine Stability",
+    Sleep Hour = st.slider(
+        "📅 Sleep Hour",
         min_value=0,
-        max_value=100,
+        max_value=24,
         value=70
     )
 
@@ -100,12 +100,12 @@ with left:
         "Metric": [
             "Sleep Consistency",
             "Activity Consistency",
-            "Routine Stability"
+            "Sleep Hour"
         ],
         "Score": [
             sleep_consistency,
             activity_consistency,
-            routine_stability
+            Sleep Hour
         ]
     })
 
@@ -113,7 +113,7 @@ with left:
 average_score = (
     sleep_consistency +
     activity_consistency +
-    routine_stability
+    Sleep Hour
 ) / 3
 if average_score >= 70:
     dynamic_confidence = "High"
@@ -190,6 +190,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
