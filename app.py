@@ -85,7 +85,7 @@ with left:
     activity_consistency = st.slider(
         "🏃 Steps",
         min_value=0,
-        max_value=1000000,
+        max_value=50000,
         value=65
     )
 
@@ -190,6 +190,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
