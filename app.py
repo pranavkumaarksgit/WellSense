@@ -25,15 +25,17 @@ with left:
     st.subheader("📊 Behaviour Trends")
 
     try:
-    response = requests.get(f"{BACKEND_URL}/risk_score/{USER_ID}", timeout=5)
+    response = requests.get(
+        f"{BACKEND_URL}/risk_score/{USER_ID}",
+        timeout=5
+    )
     api_data = response.json()
-except:
+except Exception as e:
     api_data = {
         "risk_level": "Unknown",
         "confidence": "N/A",
         "explanation": "Backend not reachable"
     }
-
 
     st.line_chart(data.set_index("Day"))
 
@@ -92,6 +94,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
