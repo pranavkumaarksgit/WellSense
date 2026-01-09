@@ -28,7 +28,6 @@ with left:
 with right:
     st.subheader("🚦 Well-Being Indicator")
 
-    # Simple logic based on last routine score
     latest_score = data["Routine Consistency Score"].iloc[-1]
 
     if latest_score >= 75:
@@ -42,6 +41,15 @@ with right:
         confidence = "Low"
 
     st.caption(f"Confidence level: {confidence}")
+
+st.subheader("🧠 Why am I seeing this?")
+
+st.write(
+    "Over the past week, your routine consistency has shown more variation "
+    "than usual. This comparison is made against your own recent patterns, "
+    "not against other users."
+)
+
 
 
 st.divider()
@@ -69,6 +77,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
