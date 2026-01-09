@@ -1,5 +1,11 @@
 import streamlit as st
 import pandas as pd
+import requests
+
+# Backend configuration
+BACKEND_URL = "https://YOUR-BACKEND-URL"
+USER_ID = "demo_user"
+
 
 # Page setup
 st.set_page_config(page_title="WellSense", layout="wide")
@@ -79,6 +85,7 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
 
