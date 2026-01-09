@@ -73,6 +73,16 @@ left, right = st.columns([2, 1])
 with left:
     st.subheader("📊 Behaviour Trends")
 
+    import numpy as np
+
+    trend_data = pd.DataFrame({
+        "Day": range(1, 8),
+        "Routine Consistency Score": np.random.normal(70, 5, 7)
+    })
+
+    st.line_chart(trend_data.set_index("Day"))
+
+
     try:
         response = requests.get(
             f"{BACKEND_URL}/risk_score/{USER_ID}",
@@ -170,6 +180,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
