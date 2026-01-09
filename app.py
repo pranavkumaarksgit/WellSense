@@ -27,15 +27,32 @@ with left:
 
 with right:
     st.subheader("🚦 Well-Being Indicator")
-    st.warning("Moderate change detected in routine")
+
+    # Simple logic based on last routine score
+    latest_score = data["Routine Consistency Score"].iloc[-1]
+
+    if latest_score >= 75:
+        st.success("Low change from your usual routine")
+        confidence = "High"
+    elif latest_score >= 60:
+        st.warning("Moderate change from your usual routine")
+        confidence = "Medium"
+    else:
+        st.error("Higher change from your usual routine")
+        confidence = "Low"
+
+    st.caption(f"Confidence level: {confidence}")
+
 
 st.divider()
 
 # Explanation
 st.info(
-    "This indicator is based on changes in daily routines such as "
-    "sleep and activity patterns. It is for awareness only."
+    "The indicator reflects how recent routine patterns compare to your "
+    "personal baseline. Temporary changes may be caused by travel, workload, "
+    "or schedule shifts. This insight is awareness-focused and non-clinical."
 )
+
 
 # User controls
 st.subheader("🔐 Your Controls")
@@ -52,5 +69,6 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
 
