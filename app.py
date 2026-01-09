@@ -15,7 +15,15 @@ left, right = st.columns([2, 1])
 
 with left:
     st.subheader("📊 Behaviour Trends")
-    st.write("Trend charts will appear here.")
+
+    # Sample behavioural data
+    data = pd.DataFrame({
+        "Day": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "Routine Consistency Score": [82, 80, 78, 65, 60, 58, 62]
+    })
+
+    st.line_chart(data.set_index("Day"))
+
 
 with right:
     st.subheader("🚦 Well-Being Indicator")
@@ -44,4 +52,5 @@ st.markdown("---")
 st.caption(
     "⚠️ This tool does not provide medical advice, diagnosis, or treatment."
 )
+
 
