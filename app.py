@@ -73,49 +73,43 @@ left, right = st.columns([2, 1])
 with left:
     st.subheader("📊 Behaviour Trends")
 
-    import numpy as np
+    st.markdown("### Enter your recent routine consistency")
 
-    days = list(range(1, 8))
+    sleep_consistency = st.slider(
+        "😴 Sleep Consistency",
+        min_value=0,
+        max_value=100,
+        value=75
+    )
 
-    trend_data = pd.DataFrame({
-        "Day": days,
-        "Sleep Consistency": np.random.normal(75, 4, 7),
-        "Activity Consistency": np.random.normal(68, 6, 7),
-        "Routine Stability": np.random.normal(72, 5, 7)
+    activity_consistency = st.slider(
+        "🏃 Activity Consistency",
+        min_value=0,
+        max_value=100,
+        value=65
+    )
+
+    routine_stability = st.slider(
+        "📅 Routine Stability",
+        min_value=0,
+        max_value=100,
+        value=70
+    )
+
+    input_data = pd.DataFrame({
+        "Metric": [
+            "Sleep Consistency",
+            "Activity Consistency",
+            "Routine Stability"
+        ],
+        "Score": [
+            sleep_consistency,
+            activity_consistency,
+            routine_stability
+        ]
     })
 
-    st.line_chart(trend_data.set_index("Day"))
-
-    try:
-        response = requests.get(
-            f"{BACKEND_URL}/risk_score/{USER_ID}",
-            timeout=5
-        )
-        api_data = response.json()
-    except Exception as e:
-        api_data = {
-            "risk_level": "Unknown",
-            "confidence": "N/A",
-            "explanation": "Backend not reachable"
-        }
-
-
-    try:
-        trend_response = requests.get(
-            f"{BACKEND_URL}/user_trends/{USER_ID}",
-            timeout=5
-        )
-        trend_json = trend_response.json()
-
-        trend_data = pd.DataFrame({
-            "Day": trend_json["days"],
-            "Routine Consistency Score": trend_json["routine_score"]
-        })
-
-        st.line_chart(trend_data.set_index("Day"))
-
-    except Exception:
-        st.warning("Trend data unavailable. Showing recent pattern snapshot.")
+    st.bar_chart(input_data.set_index("Metric"))
 
 with right:
     st.subheader("🚦 Well-Being Indicator")
@@ -183,6 +177,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
