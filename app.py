@@ -2,6 +2,14 @@ import streamlit as st
 import pandas as pd
 import requests
 
+# ---------- LOGIN STATE ----------
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+if "user_id" not in st.session_state:
+    st.session_state.user_id = ""
+
+
 # Backend configuration
 BACKEND_URL = "https://YOUR-BACKEND-URL"
 USER_ID = "demo_user"
@@ -9,6 +17,25 @@ USER_ID = "demo_user"
 
 # Page setup
 st.set_page_config(page_title="WellSense", layout="wide")
+
+def login_screen():
+    st.title("🔐 Welcome to WellSense")
+    st.write("Please enter your name to continue")
+
+    username = st.text_input("Your Name")
+
+    if st.button("Login"):
+        if username.strip():
+            st.session_state.logged_in = True
+            st.session_state.user_id = username.strip()
+            st.rerun()
+        else:
+            st.error("Please enter a valid name")
+
+if not st.session_state.logged_in:
+    login_screen()
+    st.stop()
+
 
 # Header
 st.title("🧠 WellSense")
@@ -127,6 +154,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
