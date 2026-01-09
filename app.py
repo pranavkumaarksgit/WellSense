@@ -38,10 +38,23 @@ with left:
         }
 
 
+    try:
+    trend_response = requests.get(
+        f"{BACKEND_URL}/user_trends/{USER_ID}",
+        timeout=5
+    )
+    trend_json = trend_response.json()
+
     trend_data = pd.DataFrame({
-        "Day": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        "Routine Consistency Score": [82, 80, 78, 65, 60, 58, 62]
+        "Day": trend_json["days"],
+        "Routine Consistency Score": trend_json["routine_score"]
     })
+
+    st.line_chart(trend_data.set_index("Day"))
+
+    except Exception:
+        st.warning("Trend data unavailable. Showing recent pattern snapshot.")
+
 
     st.line_chart(trend_data.set_index("Day"))
 
@@ -119,6 +132,7 @@ st.write("""
 
 st.markdown("---")
 st.caption("Built with Streamlit • FastAPI • Explainable ML")
+
 
 
 
